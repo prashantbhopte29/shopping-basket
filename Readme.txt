@@ -17,4 +17,4 @@ To start the application:
    mvn compile exec:java
 4. To execute the test class, execute the below command
    mvn test
-NOTE: PLease make sure the Java version 8 and mvn is installed in the machine.
+NOTE: Please make sure the Java version 8 and mvn is installed in the machine.
