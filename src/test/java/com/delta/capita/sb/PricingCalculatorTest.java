@@ -3,8 +3,10 @@ package com.delta.capita.sb;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PricingCalculatorTest {
 
@@ -27,4 +29,17 @@ public class PricingCalculatorTest {
         assertEquals(30, calculator.calculateTotal(Arrays.asList("Lime", "Lime", "Lime"))); // 2 * 15
     }
 
+    @Test
+    void shouldThrowExceptionForUnknownItem() {
+        PricingCalculator calculator = new PricingCalculator();
+        List<String> basket = Arrays.asList("Apple", "Banana", "Dragonfruit");
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculateTotal(basket));
+    }
+
+    @Test
+    void shouldThrowExceptionForNullItemInBasket() {
+        PricingCalculator calculator = new PricingCalculator();
+        List<String> basket = Arrays.asList("Apple", "", "Banana");
+        assertThrows(IllegalArgumentException.class, () -> calculator.calculateTotal(basket));
+    }
 }
